@@ -1,0 +1,20 @@
+syms u(x,y,z)
+u(x,y,z) = x^2*y^2/z^4;
+dx = 0.1;
+dy = 0.05;
+dz = 0.02;
+Df_x = diff(u,x);
+Df_y = diff(u,y);
+Df_z = diff(u,z);
+du=abs(Df_x(37.1,9.87,6.052))*dx+abs(Df_y(37.1,9.87,6.052))*dy+abs(Df_z(37.1,9.87,6.052))*dz;
+du_double = double(du);
+new_u = log(abs(u));
+Df_x = diff(new_u,x);
+Df_y = diff(new_u,y);
+Df_z = diff(new_u,z);
+odu = abs(Df_x(37.1,9.87,6.052))*dx+abs(Df_y(37.1,9.87,6.052))*dy+abs(Df_z(37.1,9.87,6.052))*dz;
+odu_double = double(odu);
+fprintf('Абсолютная погрешность ф-ции u = %f\n',du_double);
+%fprintf('%.5f\n', du);
+fprintf('Относительная погрешность ф-ции u = %f %\n',odu_double);
+%fprintf('%.5f\n', odu);
